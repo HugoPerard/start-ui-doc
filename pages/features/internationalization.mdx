@@ -1,0 +1,44 @@
+import { ImageTabs } from '../../components/ImageTabs';
+
+Start UI already implements internationalization, which means that it is designed to support multiple languages.
+It currently supports French, English, Arabic and Swahili, and is set up to display text in these languages in a way that is appropriate
+for the language's writing system. For example, if you are using Start UI in Arabic, the text will be displayed right-to-left, as is standard for Arabic.
+Similarly, if you are using Start UI in Swahili, the text will be displayed left-to-right, as is standard for languages that use the Latin alphabet.
+This allows users to access the user interface in their preferred language, making it more accessible and user-friendly for people around the world.
+The supported locales are available in [DayJS' documentation](https://day.js.org/docs/en/i18n/i18n).
+The default language is English and the font size of each implemented language can be adjusted manually (see **Guides / Adding a new language**).
+
+## Choosing language
+
+To change your selected language, simply go to your profile's page, and select the language you want applied through the **Language** Select :
+
+import selectLanguageDesktop from '../../public/images/screenshots/internationalization/select-language-desktop.png';
+import selectLanguageMobile from '../../public/images/screenshots/internationalization/select-language-mobile.png';
+
+<ImageTabs
+    desktopImage={{
+        alt: "Select language screenshot on desktop",
+        src: selectLanguageDesktop,
+    }}
+    mobileImage={{
+        alt: "Select language screenshot on mobile",
+        src: selectLanguageMobile,
+    }}
+/>
+
+Switching from one language that's written left-to-right to another that is not will automatically apply the expected change after clicking **Save** :
+
+import selectArabicLanguageDesktop from '../../public/images/screenshots/internationalization/select-language-arabic-desktop.png';
+import selectArabicLanguageMobile from '../../public/images/screenshots/internationalization/select-language-arabic-mobile.png';
+
+<ImageTabs
+    desktopImage={{
+        alt: "Select Arabic language screenshot on desktop",
+        src: selectArabicLanguageDesktop,
+    }}
+    mobileImage={{
+        alt: "Select Arabic language screenshot on mobile",
+        src: selectArabicLanguageMobile,
+    }}
+/>
+
