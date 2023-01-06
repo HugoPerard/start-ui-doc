@@ -1,30 +1,72 @@
 import React from "react";
 import { Tab, Tabs } from "nextra-theme-docs";
 import Image, { ImageProps as NextImageProps } from "next/image";
-import { isMobile } from "react-device-detect";
 
-export const ImageTabs: React.FC<ImageTabsProps> = ({
-  desktopImage,
-  mobileImage,
-}) => {
-  const tabs = [
-    desktopImage ? "Desktop" : null,
-    mobileImage ? "Mobile" : null,
-  ].filter((device) => !!device);
+import { createContext, useContext, useState } from "react";
+
+export type DisplayedImage = "desktop" | "mobile";
+
+type ImageTabsContextValue = {
+  displayedImage: DisplayedImage;
+  setDisplayedImage(displayedImage: DisplayedImage): void;
+};
+
+const ImageTabsContext = createContext<ImageTabsContextValue>(null);
+export const useImageTabsContext = () => {
+  const ctx = useContext(ImageTabsContext);
+
+  if (!ctx) {
+    throw new Error("Missing <ImageTabsContext.Provider>");
+  }
+
+  return ctx;
+};
+
+export const ImageTabsContextProvider = ({ children }) => {
+  const [displayedImage, setDisplayedImage] =
+    useState<DisplayedImage>("desktop");
 
   return (
-    <Tabs items={tabs}>
-      {!!desktopImage?.src && (
+    <ImageTabsContext.Provider value={{ displayedImage, setDisplayedImage }}>
+      {children}
+    </ImageTabsContext.Provider>
+  );
+};
+
+export const ImageTabs: React.FC<ImageTabsProps> = ({ desktop, mobile }) => {
+  const { displayedImage, setDisplayedImage } = useImageTabsContext();
+
+  const tabs = (
+    [desktop ? "Desktop" : null, mobile ? "Mobile" : null] as const
+  ).filter((device) => !!device);
+
+  const selectedIndex = tabs.findIndex(
+    (tab) => tab.toLowerCase() === displayedImage
+  );
+  const selectIndex = (newIndex: number) =>
+    setDisplayedImage(
+      tabs.find((_, index) => index === newIndex).toLowerCase() as
+        | "desktop"
+        | "mobile"
+    );
+
+  return (
+    <Tabs items={tabs} selectedIndex={selectedIndex} onChange={selectIndex}>
+      {!!desktop?.src && (
         <Tab>
-          <Image {...desktopImage} placeholder="blur" />
+          <Image {...desktop} placeholder="blur" />
         </Tab>
       )}
-      {!!mobileImage?.src && (
+      {!!mobile?.src && (
         <Tab>
           {/* We add a max height only on desktop */}
           <Image
-            {...mobileImage}
-            height={!isMobile ? 500 : undefined}
+            {...mobile}
+            style={{
+              maxHeight: 500,
+              objectFit: "contain",
+              objectPosition: "0 0",
+            }}
             placeholder="blur"
           />
         </Tab>
@@ -36,6 +78,6 @@ export const ImageTabs: React.FC<ImageTabsProps> = ({
 type ImageProps = Pick<NextImageProps, "src" | "alt" | "width" | "height">;
 
 type ImageTabsProps = {
-  desktopImage?: ImageProps;
-  mobileImage?: ImageProps;
+  desktop?: ImageProps;
+  mobile?: ImageProps;
 };

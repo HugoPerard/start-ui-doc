@@ -53,8 +53,8 @@ const logo = (
       fill="currentColor"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M660 27H546C543.239 27 541 29.2386 541 32V84C541 86.7614 543.239 89 546 89H660C662.761 89 665 86.7614 665 84V32C665 29.2386 662.761 27 660 27ZM546 22C540.477 22 536 26.4772 536 32V84C536 89.5229 540.477 94 546 94H660C665.523 94 670 89.5229 670 84V32C670 26.4772 665.523 22 660 22H546Z"
       fill="currentColor"
     />
