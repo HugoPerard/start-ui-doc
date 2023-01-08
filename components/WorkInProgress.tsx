@@ -1,18 +1,15 @@
-import React from 'react';
-import { Callout } from 'nextra-theme-docs'
-
+import { Callout } from "nextra-theme-docs";
 
 export const WorkInProgress = () => (
   <Callout type="info" emoji="ℹ️">
-    The documentation is currently being written by the community.
-    Feel free to{' '}
+    The documentation is currently being written by the community. Feel free to{" "}
     <a
       href="https://github.com/BearStudio/start-ui-web-doc"
       target="_blank"
       rel="noreferrer noopener"
-      style={{ textDecoration: 'underline' }}
+      style={{ textDecoration: "underline" }}
     >
       contribute ↗
     </a>
   </Callout>
-)
+);

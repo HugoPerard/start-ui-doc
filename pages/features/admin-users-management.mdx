@@ -1,0 +1,85 @@
+import { Callout } from "nextra-theme-docs";
+import { ImageTabs } from "../../components/ImageTabs";
+import adminUsersDesktopImage from "../../public/images/screenshots/admin-users-management/admin-users-desktop.png";
+import adminUsersMobileImage from "../../public/images/screenshots/admin-users-management/admin-users-mobile.png";
+import adminUserCreateDesktopImage from "../../public/images/screenshots/admin-users-management/admin-user-create-desktop.png";
+import adminUserCreateMobileImage from "../../public/images/screenshots/admin-users-management/admin-user-create-mobile.png";
+import adminUserEditDesktopImage from "../../public/images/screenshots/admin-users-management/admin-user-edit-desktop.png";
+import adminUserEditMobileImage from "../../public/images/screenshots/admin-users-management/admin-user-edit-mobile.png";
+
+# Admin users management
+
+The users management page can be accessed by administrator users from the top navigation by clicking on the "Admin" top bar
+item. It allows administrators to view, create and edit users.
+
+## Listing
+
+<Callout type="info" emoji="ℹ️">
+  As for the other pages, this is mapped by default to a JHipster API. The code
+  corresponding to this page is in the `src/spa/admin/users/PageUsers.tsx`
+  component.
+</Callout>
+
+The users listing displays all the users in the application. The listing contains some information
+about each user as well as some actions, that can be performed by clicking on the three dots button in each row :
+
+- **edit** : navigate to user page edition _(you can also click on user's row)_
+- **activate**/**deactivate** : toggle user status
+- **delete** : delete the user
+
+<ImageTabs
+  desktopImage={{
+    alt: "Profile page on desktop",
+    src: adminUsersDesktopImage,
+  }}
+  mobileImage={{
+    alt: "Profile page on mobile",
+    src: adminUsersMobileImage,
+  }}
+/>
+
+## Create user
+
+<Callout type="info" emoji="ℹ️">
+  As for the other pages, this is mapped by default to a JHipster API. The code
+  corresponding to this page is in the `src/spa/admin/users/PageUserCreate.tsx`
+  component.
+</Callout>
+
+The user creation page allows administrators to create a new user. To access it, click on the "Create User" button. This will
+bring you to an empty form that needs to be completed with new user's information. When finished, click on the
+"Create User" button to create the user.
+
+<ImageTabs
+  desktopImage={{
+    alt: "Profile page on desktop",
+    src: adminUserCreateDesktopImage,
+  }}
+  mobileImage={{
+    alt: "Profile page on mobile",
+    src: adminUserCreateMobileImage,
+  }}
+/>
+
+## Edit user
+
+<Callout type="info" emoji="ℹ️">
+  As for the other pages, this is mapped by default to a JHipster API. The code
+  corresponding to this page is in the `src/spa/admin/users/PageUserUpdate.tsx`
+  component.
+</Callout>
+
+The user edition page allows administrators to update user information.
+It is similar to [creation page](/features/admin-users-management#create-user),
+except that user's is pre-populated in the form. To confirm the user update, click on the "Update User" button.
+
+<ImageTabs
+  desktopImage={{
+    alt: "Profile page on desktop",
+    src: adminUserEditDesktopImage,
+  }}
+  mobileImage={{
+    alt: "Profile page on mobile",
+    src: adminUserEditMobileImage,
+  }}
+/>
