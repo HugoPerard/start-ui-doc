@@ -1,3 +1,35 @@
-import { WorkInProgress } from "@/components/WorkInProgress";
+# Responsive
 
-<WorkInProgress />
+Start UI [web] is designed to provide a seamless and intuitive user experience for all users, regardless of the device or screen size.
+With a mobile-first approach, Start UI [web]'s responsive design ensures that all content, screens, and [components](/features/components)
+automatically adjust to provide optimal viewing and navigation on any device. This means that whether you're accessing the platform on a desktop, laptop, tablet, or smartphone,
+you can expect the same consistent and responsive experience. With Start UI [web], users have the flexibility to access
+and utilize all the features and functionality of the platform, regardless of device.
+
+To make use of this responsive design in your development, you can follow Start UI [web]'s existing code by using [Chakra UI](/technologies/chakra-ui) for responsive management.
+
+Chakra UI components allow you to define props according to screen size. For example, this code snippet uses the `direction` prop on a `Stack` component:
+
+```tsx
+<Stack direction={{ base: "column", md: "row" }}>
+  <Text>A</Text>
+  <Text>B</Text>
+  <Text>C</Text>
+</Stack>
+```
+
+In this case, the `direction` prop will be set to `column` between the `base` and `md` breakpoints, and `row` above.
+
+This syntax is very simple, comprehensible, and maintainable, and is the recommended way to manage Chakra UI component props depending on screen size.
+
+Additionally, you can use the `useBreakpointValue` hook to define a value according to screen size. For example:
+
+```ts
+const isMobile = useBreakpointValue({ base: true, md: false });
+
+return isMobile ? "Mobile" : "Desktop";
+```
+
+In this example, `isMobile` will be `true` between the `base` and `md` breakpoints, and `false` above.
+This syntax allows you to manage variables depending on screen size, which can be useful for conditions that are outside of a Chakra UI component,
+such as displaying different content for different screen size.
